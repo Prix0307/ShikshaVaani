@@ -1,0 +1,45 @@
+﻿{
+  "model": "xtts",
+  "run_name": "mundari_finetune",
+  "run_description": "Fine-tuning XTTS on Mundari dataset",
+  "audio": {
+    "fft_size": 1024,
+    "hop_length": 256,
+    "win_length": 1024,
+    "sample_rate": 16000,
+    "num_mels": 80,
+    "mel_fmin": 0,
+    "mel_fmax": 8000
+  },
+  "dataset": {
+    "dataset_path": "data",
+    "meta_file_train": "metadata.csv",
+    "meta_file_val": "metadata.csv",
+    "language": "hi",
+    "formatter": "ljspeech",
+    "csv_delimiter": "|",
+    "column_mapping": {
+      "audio_file": "audio_file",
+      "text": "text",
+      "speaker_name": "speaker_name"
+    },
+    "speaker_id_mapping": {
+      "female": 0,
+      "male": 1
+    }
+  },
+  "training": {
+    "batch_size": 2,
+    "eval_batch_size": 2,
+    "epochs": 50,
+    "save_step": 50,
+    "save_checkpoints": true,
+    "print_step": 10,
+    "plot_step": 100,
+    "output_path": "fine_tuned_model",
+    "learning_rate": 1e-4,
+    "use_cuda": true,
+    "num_loader_workers": 2,
+    "num_val_loader_workers": 2
+  }
+}
